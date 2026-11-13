@@ -19,7 +19,7 @@ public static class DependencyInjection
 
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
-            options.UseNpgsql(settings.ConnectionStrings.PostgreSql);
+            options.UseSqlServer(settings.ConnectionStrings.SqlServer);
             options.AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>());
         });
 

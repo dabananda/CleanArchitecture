@@ -1,5 +1,6 @@
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Infrastructure.Configurations;
+using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
@@ -69,7 +70,7 @@ internal class EmailService(Settings settings, ILogger<EmailService> logger) : I
 
         await smtp.ConnectAsync(settings.Email.Host, settings.Email.Port, SecureSocketOptions.StartTls, cancellationToken);
         await smtp.AuthenticateAsync(settings.Email.Username, settings.Email.Password, cancellationToken);
-        await smtp.SendAsync(email, cancellationToken);
+        await smtp.SendAsync(new SendRequest(email), cancellationToken);
         await smtp.DisconnectAsync(true, cancellationToken);
     }
 }

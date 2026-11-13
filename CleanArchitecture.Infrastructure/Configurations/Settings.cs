@@ -13,8 +13,8 @@ public sealed class Settings
 
 public sealed class ConnectionStrings
 {
-    [Required(AllowEmptyStrings = false, ErrorMessage = "PostgreSql database connection string is required.")]
-    public string PostgreSql { get; set; } = string.Empty;
+    [Required(AllowEmptyStrings = false, ErrorMessage = "SqlServer database connection string is required.")]
+    public string SqlServer { get; set; } = string.Empty;
 }
 
 public sealed class CorsSettings
